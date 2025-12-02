@@ -1,41 +1,386 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Portfolio : Ingénieur INSEA</title>
+    <title>Amal El Bahari - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 80px 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            color: #667eea;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .intro {
+            max-width: 700px;
+            margin: 0 auto;
+            color: #555;
+            font-size: 1.1em;
+        }
+
+        /* Sections */
+        section {
+            background: white;
+            margin: 30px auto;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            font-size: 2em;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #667eea;
+            display: inline-block;
+        }
+
+        /* Compétences */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 25px;
+            border-radius: 8px;
+            color: white;
+            transition: transform 0.3s;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .skill-category h3 {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            padding: 5px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .skill-category li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* Projets */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .project-card {
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 25px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border-color: #667eea;
+        }
+
+        .project-card h3 {
+            color: #667eea;
+            font-size: 1.4em;
+            margin-bottom: 10px;
+        }
+
+        .project-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Stages */
+        .experience-timeline {
+            position: relative;
+            padding-left: 40px;
+            margin-top: 30px;
+        }
+
+        .experience-timeline:before {
+            content: "";
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .experience-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .experience-item:before {
+            content: "";
+            position: absolute;
+            left: -33px;
+            top: 25px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #667eea;
+            border: 3px solid white;
+        }
+
+        .experience-item h3 {
+            color: #2c3e50;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .experience-item p {
+            color: #666;
+        }
+
+        /* Contact */
+        .contact-info {
+            text-align: center;
+            font-size: 1.2em;
+            padding: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 8px;
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-bottom: 2px solid white;
+            transition: all 0.3s;
+        }
+
+        .contact-info a:hover {
+            opacity: 0.8;
+            border-bottom-width: 3px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: white;
+            font-size: 0.9em;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            section {
+                padding: 30px 20px;
+            }
+
+            .skills-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>EL BAHARI AMAL </h1>
-    
-    <h2>Data & engineering student</h2>
-    <p>Bienvenue sur mon portfolio en ligne. Je suis passionnée par le développement web et mobile, et j'aime créer des applications intuitives et performantes.</p>
-    <h3>Compétences</h3>
-    <ul>
-        <li>HTML, CSS, JavaScript</li>
-        <li>Frameworks : React, Vue.js</li>
-        <li>Développement Mobile : React Native, Flutter</li>
-        <li>Backend : Node.js, Express</li>
-    </ul>
-    <h3>Projets</h3>
-    <ol>
-        <li>Application de gestion de tâches</li>
-        <li>Site e-commerce pour une boutique locale</li>
-        <li>Application mobile de suivi de fitness</li>
-    </ol>
-    <div>
-        
+    <header>
+        <div class="container">
+            <div class="profile-img">AE</div>
+            <h1>Amal El Bahari</h1>
+            <p class="subtitle">Ingénieur Data & Engineering Student - INSEA</p>
+            <p class="intro">
+                Passionnée par le développement web et mobile, je me spécialise dans la création d'applications 
+                intuitives et performantes. Mon objectif est de transformer des idées innovantes en solutions 
+                technologiques concrètes.
+            </p>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Compétences -->
+        <section>
+            <h2>Compétences Techniques</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Frontend</h3>
+                    <ul>
+                        <li>HTML5 & CSS3</li>
+                        <li>JavaScript (ES6+)</li>
+                        <li>React.js</li>
+                        <li>Vue.js</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Mobile</h3>
+                    <ul>
+                        <li>React Native</li>
+                        <li>Flutter</li>
+                        <li>Responsive Design</li>
+                        <li>UI/UX Design</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Backend</h3>
+                    <ul>
+                        <li>Node.js</li>
+                        <li>Express.js</li>
+                        <li>API RESTful</li>
+                        <li>Bases de données</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projets -->
+        <section>
+            <h2>Projets Réalisés</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Application de Gestion de Tâches</h3>
+                    <p>
+                        Développement d'une application web moderne permettant aux utilisateurs de gérer 
+                        efficacement leurs tâches quotidiennes avec un système de priorités et de notifications.
+                    </p>
+                </div>
+                <div class="project-card">
+                    <h3>Site E-commerce</h3>
+                    <p>
+                        Création d'une plateforme e-commerce complète pour une boutique locale, incluant 
+                        gestion de panier, paiement sécurisé et interface d'administration.
+                    </p>
+                </div>
+                <div class="project-card">
+                    <h3>Application Mobile Fitness</h3>
+                    <p>
+                        Application mobile de suivi d'activités physiques avec tracking GPS, statistiques 
+                        détaillées et système de défis pour motiver les utilisateurs.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stages -->
+        <section>
+            <h2>Expérience Professionnelle</h2>
+            <div class="experience-timeline">
+                <div class="experience-item">
+                    <h3>Stage d'Application</h3>
+                    <p>
+                        Mise en pratique des compétences acquises en développement web et mobile dans un 
+                        environnement professionnel. Participation à des projets concrets et travail en équipe.
+                    </p>
+                </div>
+                <div class="experience-item">
+                    <h3>Stage d'Observation</h3>
+                    <p>
+                        Découverte du monde professionnel et des métiers du développement informatique. 
+                        Observation des processus de développement et des méthodologies de travail.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section>
+            <h2>Me Contacter</h2>
+            <div class="contact-info">
+                <p>Intéressé(e) par mon profil ? N'hésitez pas à me contacter !</p>
+                <p style="margin-top: 20px;">
+                    📧 Email : <a href="mailto:amal.elbahari@insea.ac.ma">amal.elbahari@insea.ac.ma</a>
+                </p>
+            </div>
+        </section>
     </div>
-    <h3>Stages</h3>
-    <ol>
-        <li>Stage d'obsérvation</li>
-        <li>Stage d'application</li>
-        
-    </ol>
-    <div>
-        <h1>new partie to affiche project  </h1>
-    </div>
-    <h3>Contact</h3>
-    <p>Vous pouvez me contacter à l'adresse email suivante : amal.elbahari@example
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Amal El Bahari - Tous droits réservés</p>
+        </div>
+    </footer>
 </body>
 </html>
